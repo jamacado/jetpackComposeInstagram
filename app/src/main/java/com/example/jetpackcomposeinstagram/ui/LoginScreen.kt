@@ -49,6 +49,39 @@ fun LoginScreen() {
     ) {
         Header(Modifier.align(Alignment.TopEnd))
         Body(Modifier.align(Alignment.Center))
+        Footer(Modifier.align(Alignment.BottomCenter))
+    }
+}
+
+@Composable
+fun Footer(modifier: Modifier) {
+    Column(modifier = modifier.fillMaxWidth()) {
+        Divider(
+            Modifier
+                .background(Color(0xFFF9F9F9))
+                .height(1.dp)
+                .fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.size(24.dp))
+        SignUp()
+        Spacer(modifier = Modifier.size(24.dp))
+    }
+}
+
+@Composable
+fun SignUp() {
+    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+        Text(
+            text = "Don't have an account?", fontSize = 12.sp,
+            color = Color(0xFFB5B5B5)
+        )
+        Text(
+            text = "Sign up.",
+            Modifier.padding(horizontal = 8.dp),
+            fontSize = 12.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color(0xFF4EA8E9)
+        )
     }
 }
 
@@ -148,18 +181,14 @@ fun ForgotPassword(modifier: Modifier) {
 @Composable
 fun Password(password: String, onTextChanged: (String) -> Unit) {
     TextField(
-        value = password,
-        onValueChange = { onTextChanged(it) },
-        modifier = Modifier.fillMaxWidth()
+        value = password, onValueChange = { onTextChanged(it) }, modifier = Modifier.fillMaxWidth()
     )
 }
 
 @Composable
 fun Email(email: String, onTextChanged: (String) -> Unit) {
     TextField(
-        value = email,
-        onValueChange = { onTextChanged(it) },
-        modifier = Modifier.fillMaxWidth()
+        value = email, onValueChange = { onTextChanged(it) }, modifier = Modifier.fillMaxWidth()
     )
 }
 
@@ -175,8 +204,7 @@ fun ImageLogo(modifier: Modifier) {
 @Composable
 fun Header(modifier: Modifier) {
     val activity = LocalContext.current as Activity
-    Icon(
-        imageVector = Icons.Default.Close,
+    Icon(imageVector = Icons.Default.Close,
         contentDescription = "Close app",
         modifier = modifier.clickable { activity.finish() })
 }
